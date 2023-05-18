@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>Exe</OutputType>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AppData\Commission_Report.PDF" />
+    <None Remove="AppData\Commission_Report.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AppData\Commission_Report.PDF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppData\Commission_Report.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+	<ItemGroup>
+		
+		<PackageReference Include="IronPdf" Version="2023.5.8" />
+		<PackageReference Include="jsreport.Binary" Version="3.11.0" />
+		<PackageReference Include="jsreport.Binary.Linux" Version="3.11.0" />
+		<PackageReference Include="jsreport.Local" Version="3.8.1" />
+	</ItemGroup>
+</Project>

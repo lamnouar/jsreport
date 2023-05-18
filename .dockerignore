@@ -1,0 +1,8 @@
+# exclude bin and obj in nested folders
+./src/**/bin/ 
+./src/**/obj/
+./docs
+./.git
+./.vs
+./GitVersion.yml
+./README.md
