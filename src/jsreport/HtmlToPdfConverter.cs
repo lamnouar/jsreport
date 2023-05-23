@@ -26,7 +26,7 @@ public class HtmlToPdfConverter : IHtmlToPdfConverter
     {
         var rs = new LocalReporting()
             .Configure(config => { return config; })
-            .RunInDirectory(Path.Combine(Directory.GetCurrentDirectory(), "jsreport"))
+            .RunInDirectory(Path.Combine(Path.GetTempPath(), "jsreports"))
             .UseBinary(RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? JsReportBinary.GetBinary() : jsreport.Binary.Linux.JsReportBinary.GetBinary())
             .AsUtility()

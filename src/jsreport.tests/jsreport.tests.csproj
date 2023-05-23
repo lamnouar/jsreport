@@ -7,6 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AppDataForTest\Commission_Report.html" />
+    <None Remove="AppDataForTest\Commission_Report.PDF" />
+    <None Remove="AppDataForTest\LinuxCommission_Report.PDF" />
+    <None Remove="AppDataForTest\test.PDF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AppDataForTest\Commission_Report.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppDataForTest\Commission_Report.PDF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppDataForTest\LinuxCommission_Report.PDF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppDataForTest\test.PDF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoFixture.AutoNSubstitute" Version="4.18.0" />
     <PackageReference Include="FluentAssertions" Version="6.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />

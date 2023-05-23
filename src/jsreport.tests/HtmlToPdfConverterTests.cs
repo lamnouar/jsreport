@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace jsreport.tests;
@@ -22,6 +23,7 @@ public class HtmlToPdfConverterTests
     public async void GivenAnHtmlString_WhenConvertToPdf_ThenReturnThePdf()
     {
         //arrange   
+        var expactedPdfFileName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Commission_Report" : "test.PDF";
         var configuration = new GenerationConfiguration
         {
             DocumentName = "Commission_Report.PDF",
@@ -29,15 +31,15 @@ public class HtmlToPdfConverterTests
         };
         configuration.TemplateVariables.Add("footerTextFontSize", "12px"); ;
 
-        var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppData", "Commission_Report.txt");
+        var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", "Commission_Report.html");
         var htmlFileAsString = await File.ReadAllTextAsync(htmlFilePath);
 
-        var expectedPdfFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppData", "Commission_Report.PDF");
+        var expectedPdfFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", expactedPdfFileName);
         var expectedPdfAsBytes = await File.ReadAllBytesAsync(expectedPdfFilePath);
 
         //act
         var convertedPdf = await _converter.ConvertAsync(htmlFileAsString, configuration);
-        File.WriteAllBytes(Path.Combine("data", "Commission_Report.PDF"), convertedPdf);
+       // File.WriteAllBytes(Path.Combine("data", "Commission_Report.PDF"), convertedPdf);
         //assert   
         convertedPdf.Count().Should().Be(expectedPdfAsBytes.Count());
         
