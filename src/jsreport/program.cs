@@ -22,7 +22,7 @@ namespace jsreport
             };
             configuration.TemplateVariables.Add("footerTextFontSize", "12px");
             var convertedPdf = await _converter.ConvertAsync(htmlFileAsString, configuration);
-            File.WriteAllBytes(Path.Combine(@"C:\workspace\Services.Document\tests\test.PDF"), convertedPdf);
+            File.WriteAllBytes("test.PDF", convertedPdf);
         }
     }
 }
