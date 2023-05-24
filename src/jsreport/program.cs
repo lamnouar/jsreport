@@ -12,17 +12,17 @@ namespace jsreport
         static async Task Main(string[] args)
         {
             HtmlToPdfConverter _converter = new HtmlToPdfConverter();
-            var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppData", "Commission_Report.txt");
+            var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppData", "htmlFile.html");
             var htmlFileAsString = await File.ReadAllTextAsync(htmlFilePath);
 
             var configuration = new GenerationConfiguration
             {
-                DocumentName = "Commission_Report.PDF",
+                DocumentName = "test.PDF",
                 TemplateVariables = new Dictionary<string, string>()
             };
             configuration.TemplateVariables.Add("footerTextFontSize", "12px");
             var convertedPdf = await _converter.ConvertAsync(htmlFileAsString, configuration);
-            File.WriteAllBytes(Path.Combine("test&.PDF"), convertedPdf);
+            File.WriteAllBytes(Path.Combine(@"C:\workspace\Services.Document\tests\test.PDF"), convertedPdf);
         }
     }
 }

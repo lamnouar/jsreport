@@ -8,15 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AppData\Commission_Report.PDF" />
-    <None Remove="AppData\Commission_Report.txt" />
+    <None Remove="AppData\htmlFile.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="AppData\Commission_Report.PDF">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppData\Commission_Report.txt">
+    <Content Include="AppData\htmlFile.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

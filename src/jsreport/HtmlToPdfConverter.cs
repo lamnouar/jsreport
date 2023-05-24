@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 using jsreport.Binary;
 using jsreport.Local;
 using jsreport.Types;
-using Microsoft.Extensions.Logging;
 
 namespace jsreport;
 
@@ -28,7 +24,7 @@ public class HtmlToPdfConverter : IHtmlToPdfConverter
             .Configure(config => { return config; })
             .RunInDirectory(Path.Combine(Path.GetTempPath(), "jsreports"))
             .UseBinary(RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                ? JsReportBinary.GetBinary() : jsreport.Binary.Linux.JsReportBinary.GetBinary())
+                ? JsReportBinary.GetBinary() : Binary.Linux.JsReportBinary.GetBinary())
             .AsUtility()
             .Create();
 
@@ -43,8 +39,8 @@ public class HtmlToPdfConverter : IHtmlToPdfConverter
                 {
                     DisplayHeaderFooter = true,
                     FooterTemplate = GetPdfFooter(configuration.TemplateVariables),
-                    HeaderTemplate = "<span></span>",
-                    Landscape = true,
+                    HeaderTemplate = "<span>test</span>",
+                    Landscape = false,
                     MarginLeft = "1in",
                     MarginBottom = "1in",
                     MarginRight = "1in"
@@ -67,7 +63,7 @@ public class HtmlToPdfConverter : IHtmlToPdfConverter
 
         return @$"<table style='margin: 30px 70px; {border} {fontFamily}
                            {color} text-align:right; {fontSize} width:100%;'>
-                        <td>Page <span class=""pageNumber""></span>&nbsp;|&nbsp;<span class=""totalPages""></span></td></table>";
+                        <td>Page <span class='pageNumber'></span>&nbsp;|&nbsp;<span class='totalPages'></span></td></table>";
     }
 }
 

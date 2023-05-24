@@ -7,23 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AppDataForTest\Commission_Report.html" />
-    <None Remove="AppDataForTest\Commission_Report.PDF" />
-    <None Remove="AppDataForTest\LinuxCommission_Report.PDF" />
-    <None Remove="AppDataForTest\test.PDF" />
+    <None Remove="AppDataForTest\filepdf.PDF" />
+    <None Remove="AppDataForTest\htmlFile.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="AppDataForTest\Commission_Report.html">
+    <Content Include="AppDataForTest\htmlFile.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AppDataForTest\Commission_Report.PDF">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppDataForTest\LinuxCommission_Report.PDF">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="AppDataForTest\test.PDF">
+    <Content Include="AppDataForTest\filepdf.PDF">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

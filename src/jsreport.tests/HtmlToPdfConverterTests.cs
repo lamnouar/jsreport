@@ -23,15 +23,15 @@ public class HtmlToPdfConverterTests
     public async void GivenAnHtmlString_WhenConvertToPdf_ThenReturnThePdf()
     {
         //arrange   
-        var expactedPdfFileName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "Commission_Report" : "test.PDF";
+        var expactedPdfFileName = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "filepdf.PDF" : "filepdf_Linux.PDF";
         var configuration = new GenerationConfiguration
         {
-            DocumentName = "Commission_Report.PDF",
+            DocumentName = "filepdf.PDF",
             TemplateVariables = new Dictionary<string, string>()
         };
         configuration.TemplateVariables.Add("footerTextFontSize", "12px"); ;
 
-        var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", "Commission_Report.html");
+        var htmlFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", "htmlFile.html");
         var htmlFileAsString = await File.ReadAllTextAsync(htmlFilePath);
 
         var expectedPdfFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", expactedPdfFileName);
@@ -39,10 +39,11 @@ public class HtmlToPdfConverterTests
 
         //act
         var convertedPdf = await _converter.ConvertAsync(htmlFileAsString, configuration);
-       // File.WriteAllBytes(Path.Combine("data", "Commission_Report.PDF"), convertedPdf);
+        //  File.WriteAllBytes(Path.Combine("/app","test_Linux.PDF"), convertedPdf);
+
         //assert   
         convertedPdf.Count().Should().Be(expectedPdfAsBytes.Count());
-        
+
 
         //Note: This assertion is ignoring the file metadata 
         var convertedPdfBase64WithoutMetadata = Convert.ToBase64String(convertedPdf).Split('+').Skip(1);
