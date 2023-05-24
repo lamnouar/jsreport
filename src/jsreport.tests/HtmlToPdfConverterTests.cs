@@ -35,7 +35,7 @@ public class HtmlToPdfConverterTests
         var htmlFileAsString = await File.ReadAllTextAsync(htmlFilePath);
 
         var expectedPdfFilePath = Path.Combine($@"{AppContext.BaseDirectory}", "AppDataForTest", expactedPdfFileName);
-        var expectedPdfAsBytes = await File.ReadAllBytesAsync(expectedPdfFilePath);
+        //var expectedPdfAsBytes = await File.ReadAllBytesAsync(expectedPdfFilePath);
 
         //act
         var convertedPdf = await _converter.ConvertAsync(htmlFileAsString, configuration);
